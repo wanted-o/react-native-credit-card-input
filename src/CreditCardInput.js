@@ -129,10 +129,11 @@ export default class CreditCardInput extends Component {
       onFocus, onChange, onBecomeEmpty, onBecomeValid,
       additionalInputsProps,
     } = this.props;
-    const value = (field === 'name' && values[field]) ? values[field].toUpperCase() : values[field];
+    
+    const value = (field === 'name' && values[field] && Platform.OS === 'ios') ? values[field].toUpperCase() : values[field];
     const fontFamily =  Platform.select({ ios: "Courier", android: "monospace" });
     return {
-      inputStyle: [s.input, inputStyle, { fontFamily: fontFamily }],
+      inputStyle: [s.input, inputStyle, { fontFamily: fontFamily }, field === 'name' && { textTransform: 'uppercase' }],
       labelStyle: [s.inputLabel, labelStyle],
       validColor, invalidColor, placeholderColor,
       ref: field, field,
