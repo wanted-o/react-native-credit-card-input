@@ -86,7 +86,7 @@ export default function connectToState(CreditCardInput) {
       const displayedFields = this._displayedFields();
       const fieldIndex = displayedFields.indexOf(field);
       const previousField = displayedFields[fieldIndex - 1];
-      if (previousField) this.focus(previousField);
+      // if (previousField) this.focus(previousField);
     };
 
     _focusNextField = field => {
@@ -108,6 +108,14 @@ export default function connectToState(CreditCardInput) {
       this.focus(field);
       this.props.onFocus(field);
     };
+
+    _onClear = () => {
+      this.setState({
+        focused: "",
+        values: {},
+        status: {},
+      })
+    }
 
     render() {
       return (
