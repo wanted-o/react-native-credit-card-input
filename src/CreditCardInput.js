@@ -190,7 +190,7 @@ export default class CreditCardInput extends Component {
           </View>
           { requiresName &&
             <CCInput {...this._inputProps("name")}
-              keyboardType="visible-password"
+              keyboardType={Platform.OS === 'ios' ? 'default' : 'visible-password'}
               containerStyle={[s.inputContainer, inputContainerStyle, { width: NAME_INPUT_WIDTH }]} /> }
           { requiresPostalCode &&
             <CCInput {...this._inputProps("postalCode")}
