@@ -80,7 +80,6 @@ export default class CCInput extends Component {
             {...additionalInputProps}
             keyboardType={keyboardType}
             autoCapitalise="words"
-            secureTextEntry={true}
             autoCorrect={false}
             style={[
               s.baseInputStyle,
