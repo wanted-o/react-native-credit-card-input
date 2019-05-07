@@ -130,17 +130,16 @@ export default class CreditCardInput extends Component {
       additionalInputsProps,
     } = this.props;
     
-    const value = (field === 'name' && values[field] && Platform.OS === 'ios') ? values[field].toUpperCase() : values[field];
     const fontFamily =  Platform.select({ ios: "Courier", android: "monospace" });
     return {
-      inputStyle: [s.input, inputStyle, { fontFamily: fontFamily }, field === 'name' && { textTransform: 'uppercase' }],
+      inputStyle: [s.input, inputStyle, { fontFamily: fontFamily }],
       labelStyle: [s.inputLabel, labelStyle],
       validColor, invalidColor, placeholderColor,
       ref: field, field,
 
       label: labels[field],
       placeholder: placeholders[field],
-      value: value,
+      value: values[field],
       status: status[field],
 
       onFocus, onChange, onBecomeEmpty, onBecomeValid,
@@ -191,6 +190,7 @@ export default class CreditCardInput extends Component {
           </View>
           { requiresName &&
             <CCInput {...this._inputProps("name")}
+              keyboardType="visible-password"
               containerStyle={[s.inputContainer, inputContainerStyle, { width: NAME_INPUT_WIDTH }]} /> }
           { requiresPostalCode &&
             <CCInput {...this._inputProps("postalCode")}
