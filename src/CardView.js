@@ -40,7 +40,7 @@ const s = StyleSheet.create({
     fontSize: 21,
     position: "absolute",
     top: 95,
-    left: 28,
+    left: 16,
   },
   name: {
     fontSize: 16,
